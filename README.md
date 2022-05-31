@@ -39,6 +39,7 @@ And then make a Vagrantfile that looks like the following, filling in your infor
         ganeti.rapi_pass = "#password"
         ganeti.cluster = "https://10.10.10.10:5080/"
         ganeti.os_type = "image+debian-squeeze"
+        ganeti.osparams = {"param1":"value"}
         ganeti.instance_name = "gimager3.organisation.org"
         ganeti.disks =[{"size"=>"8000"}] 
         ganeti.disk_template = "plain"
@@ -79,7 +80,9 @@ This provider exposes quite a few provider-specific configuration options:
 * `instance_name` - The name of the instance. 
 
 ### Optional Parameters
-* `os_type` - The OS that needs to be booted up. **Note :** This will override the default box . 
+* `os_type` - The OS that needs to be booted up. **Note :** This will override the default box .
+* `osparams` - The OS parameters.
+    * Dictionary of parameters (keys is the name of parameters, the value can be empty)
 * `mode` - Mode of creation. Defaults to create. 
 * `pnode` - The primary node where instance needs to be created. Defaults to None. 
 * `snode` - The Secondary node in case of drbd is used. Defaults to None. 

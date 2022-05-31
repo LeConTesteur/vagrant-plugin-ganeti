@@ -22,7 +22,8 @@ module VagrantPlugins
 	    client = VagrantPlugins::GANETI::Util::GanetiClient.new(config.cluster,config.rapi_user,config.rapi_pass)
 	    info = {}  
 	    info['__version__'] = 1 
-	    info['os_type'] = config.os_type               
+	    info['os_type'] = config.os_type
+			info['osparams'] = config.osparams
 	    info['disk_template'] = config.disk_template 
 	    info['disks'] = config.disks
 	    info['instance_name'] = config.instance_name

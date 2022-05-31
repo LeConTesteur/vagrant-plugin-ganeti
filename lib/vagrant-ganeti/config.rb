@@ -35,6 +35,13 @@ module VagrantPlugins
       # @return [String]
       attr_accessor :os_type
 
+
+      # The parameters of the OS.
+      #
+      # @return [{hash }]
+      attr_accessor :osparams
+
+
       # The name of the OS to use.
       #
       # @return [String]
@@ -161,6 +168,7 @@ module VagrantPlugins
 	@cluster        = UNSET_VALUE
         @version     	= 2
         @os_type      	= UNSET_VALUE
+        @osparams      	= UNSET_VALUE
 	@disk_template 	= UNSET_VALUE
 	@disks 		= UNSET_VALUE
 	@instance_name 	= UNSET_VALUE
@@ -197,6 +205,9 @@ module VagrantPlugins
 
         # OS_NAME must be nil, since we can't default that
         @os_type = nil if @os_type == UNSET_VALUE
+
+        # OS_PARAMS must be nil, since we can't default that
+        @osparams = {} if @osparams == UNSET_VALUE
 
         # disk_template since we can't default that
         @disk_template = "plain" if @disk_template == UNSET_VALUE
