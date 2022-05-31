@@ -20,7 +20,7 @@ module VagrantPlugins
         def read_state(machine)
           return :not_created if machine.id.nil?
 
-          ip_address = machine.id
+          ip_address = ip_of_machine(machine)
           if machine.communicate.ready?
             @logger.info "#{ip_address} is reachable and SSH login OK"
             return :reachable

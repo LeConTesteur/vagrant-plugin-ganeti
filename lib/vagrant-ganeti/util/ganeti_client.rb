@@ -68,8 +68,8 @@ module VagrantPlugins
 		    basic = Base64.encode64("#{rapi_user}:#{rapi_pass}").strip
 		    return "Basic #{basic}"
 		end
-	    
-	
+
+
 		def get_url(path, params = nil)
 		    param_string = ""
 
@@ -90,7 +90,16 @@ module VagrantPlugins
 		    return url.chop
 		end
 
-	
+		def get_ip()
+			url = get_url("instances/#{info['instance_name']}")
+			response_body = send_request("GET", url)
+			puts response_body
+			if response_body['nic.ips'].nil?
+				return nil
+			end
+			return response_body['nic.ips'][0]
+		end
+
 		def send_request(method, url, body = nil, headers = {}) 
 		   uri = URI.parse(cluster)
 

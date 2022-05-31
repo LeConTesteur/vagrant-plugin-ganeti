@@ -20,9 +20,9 @@ module VagrantPlugins
         def read_ssh_info(ganeti, machine)
           return nil if machine.id.nil?
           puts "Ganeti is #{machine.id}"
-          # Read the DNS info
+
           return {
-            :host => machine.id,
+            :host => ip_of_machine(machine),
             :port => 22
           }
         end
